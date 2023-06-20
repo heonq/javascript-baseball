@@ -1,6 +1,7 @@
 const {print,generateRandomNumber} = require("./util.js");
 const {GAME_MESSAGE} = require("./constants.js");
 const MissionUtils = require("@woowacourse/mission-utils");
+const checkUserInput = require("./checkUserInput.js");
 
 class Game {
     
@@ -22,6 +23,7 @@ class Game {
     getUserInput(){
         MissionUtils.Console.readLine(GAME_MESSAGE.INPUT,(answer)=>{
             this.user = answer;
+            checkUserInput(this.user);
             this.getUserInput();
         })
     }
