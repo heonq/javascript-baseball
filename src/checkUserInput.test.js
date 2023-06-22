@@ -14,4 +14,8 @@ describe("입력한 값에 대한 유효성 검사",()=>{
         const answers = ["abc","!@#","ㄱㄴㄷ"];
         expect(()=>answers.forEach((answer)=>checkUserInput(answer))).toThrow(Error(ERROR_MESSAGE.NOTANUMBER));
     })
+    test("0이 포함되지 않은 숫자를 입력했는지 테스트",()=>{
+        const answers = ["045","102","120"];
+        expect(()=>answers.forEach((answer)=>checkUserInput(answer))).toThrow(Error(ERROR_MESSAGE.INCLUDEZERO));
+    })
   })
