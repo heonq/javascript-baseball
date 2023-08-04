@@ -5,3 +5,5 @@ const CONSTANTS = object.freeze({
   restart: 1,
   quit: 2,
 });
+
+module.exports = CONSTANTS;
