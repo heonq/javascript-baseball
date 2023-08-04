@@ -1,4 +1,4 @@
-const CONSTANTS = object.freeze({
+const CONSTANTS = Object.freeze({
   ball: '볼',
   strike: '스트라이크',
   nothing: '낫싱',
