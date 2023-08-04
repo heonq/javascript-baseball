@@ -14,8 +14,11 @@ class BaseballGame {
 
   generateRandomNumber() {
     const computer = [];
-    while (computer.length < 3) {
-      const number = MissionUtils.Random.pickNumberInRange(1, 9);
+    while (computer.length < CONSTANTS.validLength) {
+      const number = MissionUtils.Random.pickNumberInRange(
+        CONSTANTS.minNumber,
+        CONSTANTS.maxNumber,
+      );
       if (!computer.includes(number)) {
         computer.push(number);
       }
@@ -43,7 +46,7 @@ class BaseballGame {
     }).length;
   }
   checkBall(numbers) {
-    return 6 - new Set([...this.#computer, ...numbers]).size;
+    return CONSTANTS.validLength * 2 - new Set([...this.#computer, ...numbers]).size;
   }
 }
 

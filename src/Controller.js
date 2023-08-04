@@ -4,6 +4,7 @@ const MESSAGE = require('../utils/Message');
 const Validator = require('../utils/Validator');
 const BaseballGame = require('./BaseballGame');
 const { Console } = require('@woowacourse/mission-utils');
+const CONSTANTS = require('../utils/Constants');
 
 class Controller {
   #baseballGame;
@@ -40,7 +41,7 @@ class Controller {
   }
   handleRestart(command) {
     Validator.validateCommand(command);
-    +command === 1 ? this.play() : Console.close();
+    +command === CONSTANTS.restart ? this.play() : Console.close();
   }
 }
 
