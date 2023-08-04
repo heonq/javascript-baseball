@@ -1,6 +1,7 @@
 const InputView = require('./view/InputView');
-const OutputView = require('./OutputView');
+const OutputView = require('./view/OutputView');
 const MESSAGE = require('../utils/Message');
+const Validator = require('../utils/Validator');
 
 class Controller {
   play() {
@@ -10,7 +11,10 @@ class Controller {
   readNumber() {
     InputView.readNumber(this.handleNumbers.bind(this));
   }
-  handleNumbers(numbers) {}
+  handleNumbers(numbers) {
+    Validator.validateNumber(numbers);
+    OutputView.printMessage(numbers);
+  }
 }
 
 module.exports = Controller;
