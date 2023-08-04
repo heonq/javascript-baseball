@@ -3,7 +3,7 @@ const CONSTANTS = require('../../utils/Constants');
 
 const OutputView = {
   printMessage(message) {
-    Console.print(message);
+    Console.print(`${message}\n`);
   },
   printResult(baseballGame) {
     const ball = baseballGame.getBall();
