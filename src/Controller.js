@@ -31,7 +31,12 @@ class Controller {
   }
   handleResult() {
     OutputView.printResult(this.#baseballGame);
+    if (this.#baseballGame.getStrike() === 3) {
+      OutputView.printMessage(MESSAGE.win);
+      return InputView.readRestart(this.handleRestart.bind(this));
+    }
   }
+  handleRestart() {}
 }
 
 module.exports = Controller;
