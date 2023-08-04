@@ -39,7 +39,7 @@ class BaseballGame {
 
   checkStrike(numbers) {
     return numbers.filter((n, index) => {
-      n === this.#computer[index];
+      return n === this.#computer[index];
     }).length;
   }
   checkBall(numbers) {
