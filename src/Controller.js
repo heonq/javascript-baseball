@@ -12,6 +12,7 @@ class Controller {
   }
 
   play() {
+    this.setUp();
     this.readNumber();
   }
   setUp() {
@@ -25,6 +26,11 @@ class Controller {
   handleNumbers(numbers) {
     Validator.validateNumber(numbers);
     OutputView.printMessage(numbers);
+    this.#baseballGame.compareWithUser(numbers);
+    this.handleResult();
+  }
+  handleResult() {
+    OutputView.printResult(this.#baseballGame);
   }
 }
 
