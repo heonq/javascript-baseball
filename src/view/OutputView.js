@@ -7,7 +7,7 @@ const OutputView = {
   },
   printResult(baseballGame) {
     const ball = baseballGame.getBall();
-    const strike = baseballGAme.getStrike();
+    const strike = baseballGame.getStrike();
     if (strike === 0 && ball === 0) return this.printMessage(CONSTANTS.nothing);
     if (strike === 0) return this.printMessage(ball + CONSTANTS.ball);
     if (ball === 0) return this.printMessage(strike + CONSTANTS.strike);

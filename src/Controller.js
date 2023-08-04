@@ -2,7 +2,8 @@ const InputView = require('./view/InputView');
 const OutputView = require('./view/OutputView');
 const MESSAGE = require('../utils/Message');
 const Validator = require('../utils/Validator');
-const BaseballGaem = require('./BaseballGame');
+const BaseballGame = require('./BaseballGame');
+const { Console } = require('@woowacourse/mission-utils');
 
 class Controller {
   #baseballGame;
@@ -35,8 +36,12 @@ class Controller {
       OutputView.printMessage(MESSAGE.win);
       return InputView.readRestart(this.handleRestart.bind(this));
     }
+    this.readNumber();
   }
-  handleRestart() {}
+  handleRestart(command) {
+    Validator.validateCommand(command);
+    +command === 1 ? this.play() : Console.close();
+  }
 }
 
 module.exports = Controller;
