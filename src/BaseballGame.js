@@ -26,27 +26,33 @@ class BaseballGame {
     this.#computer = computer;
   }
 
-  compareWithUser(numbers) {
+  countBallAndStrike(numbers) {
     numbers = [...numbers].map(Number);
-    this.#strike = this.checkStrike(numbers);
-    this.#ball = this.checkBall(numbers) - this.#strike;
+    this.checkStrike(numbers);
+    this.checkBall(numbers);
   }
 
-  getBall() {
-    return this.#ball;
-  }
-
-  getStrike() {
-    return this.#strike;
+  checkWinning() {
+    if (this.#strike === CONSTANTS.winningStrike) return true;
+    return false;
   }
 
   checkStrike(numbers) {
-    return numbers.filter((n, index) => {
+    this.#strike = numbers.filter((n, index) => {
       return n === this.#computer[index];
     }).length;
   }
   checkBall(numbers) {
-    return CONSTANTS.validLength * 2 - new Set([...this.#computer, ...numbers]).size;
+    this.#ball = numbers.filter((n, index) => {
+      return n !== this.#computer[index] && this.#computer.includes(n);
+    }).length;
+  }
+
+  getMessage() {
+    if (this.#strike === 0 && this.#ball === 0) return CONSTANTS.nothing;
+    if (this.#strike === 0) return this.#ball + CONSTANTS.ball;
+    if (this.#ball === 0) return this.#strike + CONSTANTS.strike;
+    return `${this.#ball + CONSTANTS.ball} ${this.#strike + CONSTANTS.strike}`;
   }
 }
 

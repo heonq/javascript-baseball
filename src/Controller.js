@@ -28,12 +28,12 @@ class Controller {
   handleNumbers(numbers) {
     Validator.validateNumber(numbers);
     OutputView.printMessage(numbers);
-    this.#baseballGame.compareWithUser(numbers);
+    this.#baseballGame.countBallAndStrike(numbers);
     this.handleResult();
   }
   handleResult() {
     OutputView.printResult(this.#baseballGame);
-    if (this.#baseballGame.getStrike() === 3) {
+    if (this.#baseballGame.checkWinning()) {
       OutputView.printMessage(MESSAGE.win);
       return InputView.readRestart(this.handleRestart.bind(this));
     }
