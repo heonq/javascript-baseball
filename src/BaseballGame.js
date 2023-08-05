@@ -32,16 +32,12 @@ class BaseballGame {
     this.checkBall(numbers);
   }
 
-  checkWinning() {
-    if (this.#strike === CONSTANTS.winningStrike) return true;
-    return false;
-  }
-
   checkStrike(numbers) {
     this.#strike = numbers.filter((n, index) => {
       return n === this.#computer[index];
     }).length;
   }
+
   checkBall(numbers) {
     this.#ball = numbers.filter((n, index) => {
       return n !== this.#computer[index] && this.#computer.includes(n);
@@ -53,6 +49,11 @@ class BaseballGame {
     if (this.#strike === 0) return this.#ball + CONSTANTS.ball;
     if (this.#ball === 0) return this.#strike + CONSTANTS.strike;
     return `${this.#ball + CONSTANTS.ball} ${this.#strike + CONSTANTS.strike}`;
+  }
+
+  checkWinning() {
+    if (this.#strike === CONSTANTS.winningStrike) return true;
+    return false;
   }
 }
 
