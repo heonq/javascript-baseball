@@ -15,7 +15,7 @@ const Validator = {
 
   validateCommand(command) {
     if (+command !== CONSTANTS.restart && +command !== CONSTANTS.quit)
-      throw new Error(ERROR_message.oneOrTwo);
+      throw new Error(ERROR_MESSAGE.oneOrTwo);
   },
 };
 
