@@ -11,4 +11,8 @@ describe('유효성 검사 테스트', () => {
       expect(() => Validator.validateNumber(input)).toThrow(errorMessage);
     });
   });
+  test('사용자가 입력한 게임 재시작 명령어에 대한 유효성 검사', () => {
+    const answer = ['3', '일', 'one', '11', '22', '재시작', '종료'];
+    expect(() => answer.forEach(Validator.validateCommand)).toThrow(ERROR_MESSAGE.oneOrTwo);
+  });
 });
